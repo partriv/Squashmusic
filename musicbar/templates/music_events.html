@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+
+{% block moretitle %}
+	{{ city.name }} Music Events {% if filter_venues %} at {% for venue in filter_venues %}{{ venue.name }}{% if forloop.last %}{% else %}, {% endif %}{% endfor %}{% endif %} 
+	
+{% endblock moretitle %}
+
+{% block ogtitle %}{{ city.name }} Music Events{% endblock ogtitle %}
+{% block ogurl %}http://musicbar.fm/events/music/{% endblock ogurl %}
+{% block ogdesc %}Concerts, shows and music events in NYC and the surrounding area.{% endblock ogdesc %}
+{% block ogimage %}http://musicbar.fm/i/squash_music.png{% endblock ogimage %}
+
+
+{# {% block body_attribs %}onscroll="moreEvents();"{% endblock body_attribs %} #}
+
+{% block left_content %}
+
+	{% block left_logo %}
+	{% endblock left_logo %}
+		
+	<div id="vidform"> 
+		<select name="vid" id="venueselector">
+		<option value="" {% if not vid %}selected="selected"{% endif %}>All Venues</option>
+		{% for v in venues %}
+			<option value="{{ v.id }}" {% if v.id == vid %}selected="selected"{% endif %}>{{ v.name|title }}</option>
+		{% endfor %}
+		</select> <a href="#vid=">All Venues</a>
+	</div>
+	
+	<div id="qform">
+		<input type="text" name="q" value="{% if q %}{{ q }}{% else %}Artist Search{% endif %}" style="width: 250px;" id="artistSearch" /> 
+	</div>
+	
+	<br/>
+	
+	<input type="hidden" id="cid" value="{{ city.id }}" />
+	
+{% endblock left_content %}
+
+{% block more_main_content_id %}_music{% endblock %}
+{% block main_content %}
+	<input type="hidden" id="eventPg"/>
+
+	<div id="events">
+		
+		{% include "ajax/find_events.html" %}		
+				
+	</div>
+
+    
+    <div class="clear"></div>
+	<div id="loadingMore"><img src="/i/loading.gif"/> Loading More</div>
+	
+	 
+{% endblock main_content %}	
+
+
+
+
+

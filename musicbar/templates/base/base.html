@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+	<head>
+		
+		
+		{% include "base/meta.html" %}
+		
+		<title>{% block moretitle %}Musicbar.fm{% endblock moretitle %}</title>    
+		
+   		<meta property="og:title" content="Musicbar.fm" />
+   		<meta property="og:description" content="Super simple concert finder for many cities across the US. Really easy to use." />   		
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://musicbar.fm" />
+		<meta property="og:image" content="http://musicbar.fm/i/mb_og.jpg" />
+		<meta property="og:site_name" content="Musicbar.fm" />
+		<meta property="fb:admins" content="7903221" />
+		<meta property="fb:app_id" content="191927307546994" />
+   		
+   		
+		<link rel="shortcut icon" href="/i/favicon.jpg" />
+   		
+   		
+		
+		<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+		<script type="text/javascript" src="/j/jquery.jshowoff.min.js"></script>
+		<script type="text/javascript" src="/j/jquery.tooltip.min.js"></script>
+		<script type="text/javascript" src="/j/jquery.cycle.min.js"></script>
+		<script type="text/javascript" src="/j/scripts.js"></script>
+		
+		
+		<link rel="stylesheet" href="/c/jquery.tooltip.css" type="text/css" />
+		<link rel="stylesheet" href="/c/core.css" type="text/css" />
+		{% block more_js %}
+		{% endblock more_js %}	
+	
+		
+	</head>
+	<body {% block body_attribs %}{% endblock body_attribs %}>
+	
+        <div id="eventUnderlay"></div>        
+    
+		<div id="wrapper">
+		
+			 <div id="eventInfo"></div>
+			
+			<div id="header">
+				<a id="headLogo" href="/"><span class="music">Music</span><span class="bar">bar</span><span class="dot">.</span><span class="fm">fm</span></a>
+				<div id="fbLike">
+					<div id="fb-root"></div>
+					<script>
+						(function(d) {
+							var js, id = 'facebook-jssdk';
+							if (d.getElementById(id)) {
+								return;
+							}
+							js = d.createElement('script');
+							js.id = id;
+							js.async = true;
+							js.src = "//connect.facebook.net/en_US/all.js#appId=273346132683113&xfbml=1";
+							d.getElementsByTagName('head')[0].appendChild(js);
+						}(document));
+					</script>
+					<div class="fb-like" data-href="http://musicbar.fm"
+						data-send="false" data-width="450" data-show-faces="false"
+						data-colorscheme="dark" data-font="verdana"></div>
+				</div>
+			</div>
+			
+			<div id="citylist" >
+			{% for c in cities %}{% if c.name == city.name %}<span class="urcity">{{ c.name }}</span>{% else %}<a href="/{{ c.slug }}/">{{ c.name }}</a>{% endif %}{% if forloop.last %}{% else %} &middot; {% endif %}{% endfor %}
+			</div>
+			
+			<div id="fixedContact"></div>
+			<div id="fixedContactForm">
+				Thank you for visiting. This site was made by two guys in NYC who love music.<br/>
+				<span class="em">email us: musicbarfm at gmail</span> <br/>
+				<img src="/i/pbas.png"/>
+				<span class="close">close</span>
+		    </div>
+			
+			<div id="fixednav">							
+				<div class="vensrch">
+					<select name="vid" id="venueFixedSel">
+					<option value="" {% if not vid %}selected="selected"{% endif %}>All Venues</option>
+					{% for v in venues %}
+						<option value="{{ v.id }}" {% if v.id == vid %}selected="selected"{% endif %}>{{ v.name|title }}</option>
+					{% endfor %}
+					</select>
+				</div>
+				
+				<span class="fixedlogo">
+				    <span class="music">M</span><span class="bar">B</span>&nbsp;<a href="/{{ city.slug }}/">{{ city.name }}</a>
+				</span>
+				
+				<span class="artsrch">
+					<input type="text" name="q" value="{% if q %}{{ q }}{% else %}Artist Search{% endif %}" style="width: 250px;" id="fixedArtistSearch" />
+				</span>				
+			</div>
+			
+			<div class="clear"></div>
+			
+			<div id="content">				
+				{% block content %}				
+					<div id="left_content">
+						{% block left_content %}{% endblock left_content %}
+					</div>					 
+					 
+					<div id="main_content{% block more_main_content_id %}{% endblock %}">
+						{% block main_content %}{% endblock main_content %}
+					</div>					
+				{% endblock content %}				
+				<div class="clear"></div>
+			</div><!--  close content -->
+			
+			{% include "base/footer.html" %}
+			
+		</div> <!--  close wrapper -->			
+		
+				
+	</body>
+</html>

@@ -1,0 +1,11 @@
+
+{% for n in news %}
+	
+	<div id="news{{n.id}}">
+		<div class="newsItem">
+			<a href="{{ n.url }}">{{ n.title }}</a> - {{ n.date }} - {{ n.source.name }}
+			<br/>
+			{{ n.description|safe }}
+		</div>
+	</div>
+{% endfor %}

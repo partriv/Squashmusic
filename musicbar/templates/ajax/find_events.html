@@ -1,0 +1,56 @@
+<div id="eventsList">
+{% for e in  events %}
+	<div class="music_event">
+		<div class="meventWrap" {% if e.featured %}style="background-color: #f6e9c0;"{% endif %}>
+		
+			<div class="event-info" >
+				<div class="event-date">
+					{{ e.start_time|date:"D, M d" }}
+				</div>
+				
+				{% if e.image_size_lg %}
+				<div class="event-img">			
+					<a href="#event{{ e.id }}">
+						 <img src="{{ e.image_size_lg }}"/><br/> 
+					</a>
+				</div>
+				{% endif %}
+											
+				<div class="event-title">				
+					<a href="#event{{ e.id }}">{{ e.name }}</a>
+				</div>
+				{% if e.venue %}
+					<div class="event-venue">
+						<a href="#event{{ e.id }}">@ {{ e.venue.name }}</a>
+					</div>
+				{% endif %}			
+				
+				 
+	
+				
+				<div class="event-artists">
+					with<br/>
+				{% for h in e.artists.all %} 				
+					{{ h.name }}<br/>
+				{% endfor %}
+				</div>
+				{% if e.description %}{{ e.description|slice:":140" }}<br/>{% endif %}
+				
+				{% comment %}
+					{% for t in e.tickets.all %}
+					<div class="buyTicket">
+						<a href="{{ t.url }}" target="_blank">Buy Tickets</a>
+					</div>
+					{% endfor %}
+				{% endcomment %}	
+			</div>
+			
+			
+			<div class="clear"></div>
+		</div>
+				
+				
+
+	</div>
+{% endfor %}
+</div>

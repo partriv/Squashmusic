@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+	<url>
+	    <loc>http://dailysquash.com/</loc>
+	    <lastmod>{{ date|safe }}</lastmod>
+	    <changefreq>daily</changefreq>
+	    <priority>1</priority>
+	</url>
+
+	<url>
+	    <loc>http://dailysquash.com/music/</loc>
+	    <lastmod>{{ date|safe }}</lastmod>
+	    <changefreq>daily</changefreq>
+	    <priority>1</priority>
+	</url>
+
+	<url>
+	    <loc>http://dailysquash.com/photo/</loc>
+	    <lastmod>{{ date|safe }}</lastmod>
+	    <changefreq>daily</changefreq>
+	    <priority>1</priority>
+	</url>
+
+	<url>
+	    <loc>http://dailysquash.com/etsy/</loc>
+	    <lastmod>{{ date|safe }}</lastmod>
+	    <changefreq>daily</changefreq>
+	    <priority>1</priority>
+	</url>
+
+	<url>
+	    <loc>http://dailysquash.com/game/</loc>
+	    <lastmod>{{ date|safe }}</lastmod>
+	    <changefreq>daily</changefreq>
+	    <priority>1</priority>
+	</url>
+	
+	 
+
+	{% for v in venues %}
+	<url>
+	    <loc>http://dailysquash.com/music/?vid={{ v.id }}</loc>
+	    <lastmod>{{ date|safe }}</lastmod>
+	    <changefreq>daily</changefreq>
+	    <priority>0.8</priority>
+	</url> 	
+	{% endfor %}
+
+	<url>
+	    <loc>http://dailysquash.com/sitemap/</loc>
+	    <lastmod>{{ date|safe }}</lastmod>
+	    <changefreq>daily</changefreq>
+	    <priority>0.8</priority>
+	</url> 
+
+</urlset>

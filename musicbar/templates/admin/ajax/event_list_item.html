@@ -1,0 +1,58 @@
+{% for e in  events %}
+	<div id="event{{e.id}}">
+		<div class="item{% if e.featured %} featured{% endif %}">
+			<div class="event-tools">
+				<div id="stat{{ e.id }}" style="display:none; background-color:yellow;"></div>
+				
+				<span id="eventFeatured-{{ e.id }}">
+					<a href="#" onclick="return toggleEventFeatured({{ e.id }});" >{% if e.featured %}Pull down{% else %}Feature{% endif %}</a>
+				</span>
+				<br/>
+				<a href="#" onclick="return deleteEvent({{ e.id }});" >Delete</a>			
+			</div>
+			<div class="event-info">			
+				{% if e.url %}
+					<a href="{{ e.url }}" target="_blank">{{ e.name }}</a>
+				{% else %}
+					<a href="{{ e.external_url }}" target="_blank">{{ e.name }}</a>
+				{% endif %} 
+				{% if e.venue %}
+					@ <a href="{{ e.venue.url }}" target="_blank">{{ e.venue.name }}</a>
+				{% endif %}
+				<br/>{{ e.start_time }} {% if e.end_time %}  -  {{ e.end_time }}{% endif %}
+				<div>
+				{% for h in e.artists.all %}
+					{% if forloop.first %}W/ {% else %}&nbsp;&nbsp;&nbsp;&nbsp;{% endif %} 				
+					{{ h.name }}<br/>
+				{% endfor %}
+				</div>	
+			</div>
+			<div class="event-cat">
+				<select id="catItemSel-{{ e.id }}" onchange="changeEventItemCat({{ e.id }});">
+					<option {% ifequal e.category 'Events' %}selected{% endifequal %}>Events</option>
+					<option {% ifequal e.category 'Music' %}selected{% endifequal %}>Music</option>
+					<option {% ifequal e.category 'Art' %}selected{% endifequal %}>Art</option>
+					<option {% ifequal e.category 'Movies' %}selected{% endifequal %}>Movies</option>
+					<option {% ifequal e.category 'Fashion' %}selected{% endifequal %}>Fashion</option>
+					<option {% ifequal e.category 'Books' %}selected{% endifequal %}>Books</option>
+					<option {% ifequal e.category 'Food' %}selected{% endifequal %}>Food</option>
+				</select>
+				<br/>
+				{{ e.source.name }}
+			</div>
+			<div class="event-more">
+				{% if e.description %}{{ e.description|safe }}<br/>{% endif %}
+				{% if e.image_size_lg %} <img src="{{ e.image_size_lg }}"/><br/> {% endif %}
+			</div>
+			
+			<div class="clear"></div>		
+					
+			{% for t in e.tickets.all %}
+				<a href="{{ t.url }}" target="_blank">{{ t.name }}</a><br/>
+			{% endfor %}
+			
+			
+			
+		</div>
+	</div>
+{% endfor %}

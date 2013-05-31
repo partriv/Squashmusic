@@ -1,0 +1,72 @@
+#wrapper { width: 1000px; margin: auto;}
+#header {height: 50px; background: rgba(0, 0, 0);  background: rgba(0, 0, 0, 0.5); padding: 10px;}
+
+#headLogo { letter-spacing: 20px; font-size: 38px; font-weight:bold; line-height:1em; float:left;}
+#headLogo:hover { text-decoration: none;}
+#citylist { margin: 10px 0px; line-height: 1.6em; }
+#fbLike { float: left; margin-top:10px; }
+.connect_widget .connect_widget_text { color: #fff !important; }
+
+
+
+#fixednav { position: fixed; top: 0px; height: 25px; width: 970px; background: rgba(0, 0, 0);  background: rgba(0, 0, 0, 0.7); 
+			padding: 8px;  margin-left: 4px; display: none;  }
+#fixednav a { color: #fff; }
+#fixednav form {display: inline; }
+#fixednav input {font-size: 12px; padding: 1px; }
+#fixednav select {font-size: 12px; padding: 1px; width: 200px;}
+#fixednav .artsrch {float: right;}
+#fixednav .vensrch { float: left;  }
+#fixednav .fixedlogo { text-align: center; }
+#fixednav .music, #fixednav .bar { font-size: 26px }
+
+#fixedContact{ position: fixed; top: 100px; left: 0px; background-image: url("/i/aboutus.png"); width: 20px; height: 93px; cursor: pointer;
+				border-bottom: 2px solid #666; border-top: 2px solid #666; border-right: 2px solid #666;}
+#fixedContactForm{ position: fixed; top: 100px; left: 0px; 
+				border-bottom: 2px solid #666; border-top: 2px solid #666; border-right: 2px solid #666; background: rgba(0, 0, 0);  background: rgba(0, 0, 0, 0.7); 
+				display: none; padding: 10px; width: 200px; height: 128px; font-size: 12px;}								
+#fixedContactForm .close { font-size: 10px; cursor: pointer; text-decoration: underline; }
+#fixedContactForm .em { font-size: 10px; }
+
+
+#venue-sel{ height: 50px; font-size: 24px; width: 400px; } 
+
+	
+.music_event {width: 126px; height: 335px; float: left; overflow: hidden; background: rgba(0, 0, 0);  background: rgba(0, 0, 0, 0.5); margin:4px; padding:4px;}
+.event-date { color: #ff63b5; }
+.event-title { font-size: 20px; text-transform: uppercase; }
+.event-venue { color: #5ae99c; }
+.event-venue > a { color: #5ae99c; }
+.event-artists { font-size: 15px; line-height: 1.2em; }
+
+
+#eventUnderlay { position: fixed; width: 100%; height: 100%;  background: rgba(0, 0, 0, 0.5); z-index: 200; display: none;}
+#eventInfo{ position: fixed;  width: 600px; z-index: 211; background-color: #666; margin-left: 200px; margin-top: 200px; display: none;  padding: 25px; }
+#eventInfo div {margin-bottom: 15px }
+#eventInfo .event-date { font-size: 20px;  } 
+#eventInfo .event-img { float: left; }
+#eventInfo .event-more { float: left; margin-left: 20px;  width: 250px; }
+#eventInfo .event-title { color: #62B7DF; font-size: 24px; line-height: 1.2em;}
+
+
+#left_content { margin: 20px 0px;}
+#qform { display:inline; float:right; text-align: center; }
+#qform input { font: 20px 'Lucida Grande'; color: #121212; padding: 4px; border: 0px solid transparent; margin-right: 10px; }
+#vidform { display:inline; text-align: center; }
+#vidform a { font-size: 12px; color: #fff; }
+#vidform input { font: 20px 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif;; color: #121212; padding: 4px; border: 0px solid transparent; }
+#vidform select { margin-left: 5px; font: 14px/24px 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif; border: 3px solid #E5E5E5; height: 30px; border-radius: 0; -webkit-border-radius: 0; padding: 3px; }
+
+#loadingMore{display: none; margin: auto; padding:50px; width: 150px;}
+
+
+.clear { margin-left: 20px; font-size: 20px; }
+
+.urcity  { font: 25px 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif; color: #fff; margin-bottom: 10px; }
+.atvenue { font: 25px 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif; color: #5ae99c; margin-bottom: 10px; }
+.withartist { font: 25px 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif; color: #fff; margin-bottom: 10px; }
+
+.music { color: #fff;}
+.bar { color: #62b7df;}
+.dot { color: #ff63b5; }
+.fm { color: #5ae99c;}

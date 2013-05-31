@@ -1,0 +1,55 @@
+{% extends "admin/base.html" %}
+
+
+{% block body_attribs %}  {% endblock body_attribs %}
+
+{% block admin_title %}
+Manage Event Sources for {{ city.name }}
+{% endblock %}
+
+
+
+{% block main_content %}
+
+	<div>		
+		Name <input type="text" id="nameEventSourceTxt" maxlength="256" style="width: 300px;" /><br/>
+		URL <input type="text" id="urlEventSourceTxt" maxlength="1024" style="width: 300px;" /><br/>
+		Proxy <input type="text" id="urlEventProxyTxt" maxlength="1024" style="width: 300px;" /><br/>
+		<a href="#" onclick="addEventSource();">Add</a> <span id="addError"></span>  
+	</div>
+	<br/>
+	<div id="sources">
+		{% for s in sources %}			
+			<div id="source-{{ s.id }}">
+				<div class="source"> 
+					<span class="source-active-{{ s.id }}"><a href="#" onclick="return toggleEventSourceActive('{{ s.id }}');">{% if s.active %}De-activate{% else %}Activate{% endif %}</a></span> -
+					<a href="#" onclick="return removeEventSource({{ s.id }});" title="Delete">Delete</a> -  
+					<select id="catsel-{{ s.id }}" onchange="changeEventSourceCat({{ s.id }});">
+						<option {% ifequal s.category 'Events' %}selected{% endifequal %}>Events</option>
+						<option {% ifequal s.category 'Music' %}selected{% endifequal %}>Music</option>
+						<option {% ifequal s.category 'Art' %}selected{% endifequal %}>Art</option>
+						<option {% ifequal s.category 'Movies' %}selected{% endifequal %}>Movies</option>
+						<option {% ifequal s.category 'Fashion' %}selected{% endifequal %}>Fashion</option>
+						<option {% ifequal s.category 'Books' %}selected{% endifequal %}>Books</option>
+						<option {% ifequal s.category 'Food' %}selected{% endifequal %}>Food</option>
+						<option {% ifequal s.category '' %}selected{% endifequal %} value=''>Proxy</option>
+					</select>
+					{{ s.name }} - <a href="{{ s.url }}">{{ s.url }}</a>
+					{% if not s.proxy %}
+					 - Warning: Proxy not configured. Feed will not work.
+					 {% else %}
+					  (Proxy: {{ s.proxy }})
+					{% endif %} <span id="stat{{s.id}}" style="background-color: yellow;"></span>
+					
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<br/><br/>
+	<div>
+		Bulk <a href="#" onclick="addBulkEventSource();">Add</a>   
+		<br/>
+		<textarea rows="10" cols="70" id="bulkText"></textarea>
+		
+	</div>		
+{% endblock main_content %}

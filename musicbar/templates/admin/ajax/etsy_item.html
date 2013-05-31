@@ -1,0 +1,12 @@
+<div class="etsy-item">
+	<div id="etsy-item-{{listing.listing_id}}">
+		<a href="#" onclick="return delEtsyItem('{{ listing.listing_id }}');">Delete</a>
+		 - <a href="{{ listing.url }}">{{ listing.title }}</a> - {{ listing.listing_id }}
+		 - ${{ listing.price }}  
+		 by <a href="http://www.etsy.com/shop/{{ listing.user_name }}">{{ listing.user_name }}</a>
+		<br/>
+		{% for i in listing.images.all %}
+			<img src="{{ i.url_med }}"/>
+		{% endfor %}
+	</div>
+</div>

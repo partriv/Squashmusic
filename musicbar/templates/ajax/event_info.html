@@ -1,0 +1,47 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    
+    $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
+    $.ajax("http://connect.facebook.net/en_US/all.js#appId=273346132683113&xfbml=1");
+});
+</script>
+
+
+{% if event.image_size_xl %}
+<div class="event-img">                 
+     <img src="{{ event.image_size_xl }}"/><br/>         
+</div>
+{% endif %}
+        
+<div class="event-more">
+		<div class="event-date">
+		    {{ event.start_time|date:"D, M d" }}
+		</div>
+                    
+	  <div class="event-title">{{ event.name }}</div>	  
+	  <div class="event-venue">@ {{ event.venue.name }}</div>         
+	  
+	  <div class="event-artists">
+	      with<br/>
+	  {% for h in event.artists.all %}                
+	      {{ h.name }}<br/>
+	  {% endfor %}
+	  </div>
+	  {% if event.description %}{{ event.description }}<br/>{% endif %}
+	
+	<br/>
+	
+	
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://musicbar.fm/{{ city.slug }}/#event{{ event.id }}" data-text="I'm going to {{ event.name }} @ {{ event.venue.name }} {{ event.start_time|date:"D, M d" }}, can't wait!" data-via="Musicbarfm" data-size="large" data-count="none">Tweet</a>
+    
+    {#<div class="fb-like" data-href="http://musicbar.fm/{{ city.slug }}/#event{{ event.id }}" data-send="false" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="lucida grande"></div>#}
+    
+	
+	  {% for t in event.tickets.all %}
+	  <div class="buyTicket">
+	      <a href="{{ t.url }}" target="_blank">Buy Tickets</a>
+	  </div>
+	  {% endfor %}
+</div>            
+
+<div class="clear"></div>

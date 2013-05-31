@@ -1,0 +1,10 @@
+body { background-color: #333; color: #fff; font: 18px/20px 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif; margin: 0;}
+
+a{ color: #62b7df; text-decoration: none; }
+
+a:hover { text-decoration: underline; }
+
+.clear{ clear: both; }
+
+img{ border: 0; }
+

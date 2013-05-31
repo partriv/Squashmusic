@@ -1,0 +1,55 @@
+{% extends "admin/base.html" %}
+
+
+{% block body_attribs %} {% endblock body_attribs %}
+
+{% block admin_title %}
+	Manage Events
+{% endblock %}
+
+
+
+{% block main_content %}
+
+
+<select id="catsel" onchange="changeEventCat();">
+	<option {% ifequal cat 'All' %}selected{% endifequal %}>All</option>
+	<option {% ifequal cat 'News' %}selected{% endifequal %}>News</option>
+	<option {% ifequal cat 'Music' %}selected{% endifequal %}>Music</option>
+	<option {% ifequal cat 'Art' %}selected{% endifequal %}>Art</option>
+	<option {% ifequal cat 'Movies' %}selected{% endifequal %}>Movies</option>
+	<option {% ifequal cat 'Fashion' %}selected{% endifequal %}>Fashion</option>
+	<option {% ifequal cat 'Books' %}selected{% endifequal %}>Books</option>
+	<option {% ifequal cat 'Food' %}selected{% endifequal %}>Food</option>
+	<option {% ifequal cat 'Photos' %}selected{% endifequal %}>Photos</option>	
+</select>
+	
+
+	<div>
+		<input type="text" id="eventNameTxt" onkeypress="findEventByName();"/> 
+		<a href="#" onclick="loadEvents();">Load All Events</a> <span id="loading" style="display: none;">Loading</span>	
+	</div>
+	<div class="pagingCons">
+		{% for pgn in paginator.page_range %}
+		 	{% ifequal pg pgn %}[{{ pgn }}]{% else %}<a href="/admin/manage-events/?pg={{ pgn }}">{{ pgn }}</a>{% endifequal %}&nbsp;
+		{% endfor %}
+	</div>
+	<hr/>
+	<br/>
+	
+		
+	<div id="events">
+	
+		{% include "admin/ajax/event_list_item.html" %}
+	
+	</div>
+	
+	<hr/>
+	<div class="pagingCons">
+		{% for pgn in paginator.page_range %}
+		 	{% ifequal pg pgn %}[{{ pgn }}]{% else %}<a href="/admin/manage-events/?pg={{ pgn }}">{{ pgn }}</a>{% endifequal %}&nbsp;
+		{% endfor %}
+	</div>
+	
+	
+{% endblock main_content %}

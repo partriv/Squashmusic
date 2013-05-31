@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>{{ admin_title }} - Musicbar Admin</title>
+		{% include "base/meta.html" %}
+		<script type="text/javascript" src="/j/admin/scripts.js"></script>
+		<link rel="stylesheet" href="/c/admin.css" type="text/css" />
+		{% block more_js %}
+		{% endblock more_js %}
+	</head>
+	<body {% block body_attribs %}{% endblock body_attribs %}>
+		<h3 style="width: 250px; display:inline;font-weight:normal;">SquashCMS</h3> - 
+		<a href="/">Squash Home</a> - {{ admin_title }} - 
+		<span class="homelink"><a href="/admin/event-sources/">Manage Event Sources</a></span>	| 
+		<span class="homelink"><a href="/admin/manage-events/">Manage Events</a></span>	| 
+		
+		<hr/>
+		{% block main_content %}
+		{% endblock main_content %}
+	</body>
+</html>

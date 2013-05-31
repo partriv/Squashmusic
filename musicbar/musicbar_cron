@@ -1,0 +1,4 @@
+*/20 * * * * root export PYTHONPATH=/srv/squashmusic/squashmusic:/srv/squash/lib:/srv/squash/venv/lib/python2.6/site-packages; python /srv/squashmusic/squashmusic/musicbar/manage.py del_data > /srv/squashmusic/logs/delcron.log 2>&1
+0 5 * * * root export PYTHONPATH=/srv/squashmusic/squashmusic:/srv/squash/lib:/srv/squash/venv/lib/python2.6/site-packages; python /srv/squashmusic/squashmusic/musicbar/manage.py update_data > /srv/squashmusic/logs/eventcron.log 2>&1
+5 * * * * root export PYTHONPATH=/srv/squashmusic/squashmusic:/srv/squash/lib:/srv/squash/venv/lib/python2.6/site-packages; python /srv/squashmusic/squashmusic/musicbar/manage.py tweeter > /srv/squashmusic/logs/tweeter.log 2>&1
+
