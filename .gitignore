@@ -1,1 +1,5 @@
 .svn
+.project
+.pydevproject
+musicbar/apache/
+musicbar/conf/settings_local.prod
